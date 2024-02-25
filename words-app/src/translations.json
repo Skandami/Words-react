@@ -1,0 +1,14 @@
+{
+  "translations": [
+    { "english": "hello", "russian": "привет" },
+    { "english": "goodbye", "russian": "до свидания" },
+    { "english": "cat", "russian": "кот" },
+    { "english": "dog", "russian": "собака" },
+    { "english": "apple", "russian": "яблоко" },
+    { "english": "ice-cream", "russian": "мороженое" },
+    { "english": "bread", "russian": "хлеб" },
+    { "english": "chair", "russian": "стул" }
+   
+  ]
+}
+
