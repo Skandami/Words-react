@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
-import translationsData from './translations.json';
+import { useState } from 'react';
+import translationsData from '../../translations.json';
 import TranslationCard from './TranslationCard';
+
 
 function TranslationApp() {
   const [englishWord, setEnglishWord] = useState('');

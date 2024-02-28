@@ -1,5 +1,3 @@
-// TranslationCard.js
-import React from 'react';
 
 function TranslationCard({ english, russian }) {
   return (
