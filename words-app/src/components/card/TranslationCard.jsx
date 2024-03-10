@@ -1,5 +1,4 @@
-
-function TranslationCard({ english, russian }) {
+export default function TranslationCard({ english, russian }) {
   return (
     <div className="card">
       <div className="word">English: {english}</div>
@@ -7,5 +6,3 @@ function TranslationCard({ english, russian }) {
     </div>
   );
 }
-
-export default TranslationCard;

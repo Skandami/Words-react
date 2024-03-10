@@ -1,0 +1,24 @@
+{
+  "animals": [
+    {"english": "cat", "russian": "кошка"},
+    {"english": "dog", "russian": "собака"},
+    {"english": "elephant", "russian": "слон"},
+    {"english": "lion", "russian": "лев"},
+    {"english": "tiger", "russian": "тигр"},
+    {"english": "bear", "russian": "медведь"},
+    {"english": "wolf", "russian": "волк"},
+    {"english": "deer", "russian": "олень"},
+    {"english": "rabbit", "russian": "кролик"},
+    {"english": "fox", "russian": "лиса"},
+    {"english": "horse", "russian": "лошадь"},
+    {"english": "cow", "russian": "корова"},
+    {"english": "sheep", "russian": "овца"},
+    {"english": "pig", "russian": "свинья"},
+    {"english": "chicken", "russian": "курица"},
+    {"english": "duck", "russian": "утка"},
+    {"english": "goose", "russian": "гусь"},
+    {"english": "turkey", "russian": "индейка"},
+    {"english": "frog", "russian": "лягушка"},
+    {"english": "snake", "russian": "змея"}
+  ]
+}

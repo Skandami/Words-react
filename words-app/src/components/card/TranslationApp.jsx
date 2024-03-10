@@ -1,10 +1,14 @@
 import { useState } from "react";
-import translationsData from "../../translations.json";
-import TranslationCard from "./TranslationCard";
+import translationsData from "../data/translations.json";
+import animalsData from "../data/animals.json";
 import MeaningCard from "./MeaningCard";
 import MeaningTwoCard from "./MeaningTwoCard";
+import WordCard from "./WordCard";
+import WordCarousel from "./WordCarousel";
+import SecondHeader from "./SecondHeader";
+import ThirdHeader from "./ThirdHeader";
 
-function TranslationApp() {
+export default function TranslationApp() {
   const [englishWord, setEnglishWord] = useState("");
   const [translation, setTranslation] = useState(null);
 
@@ -30,25 +34,26 @@ function TranslationApp() {
       <div className="wrap">
         <div className="card-container">
           {translation && (
-            <TranslationCard
+            <WordCard
               english={translation.english}
               russian={translation.russian}
             />
           )}
-
-          <div className="meaning-container">
-            {" "}
-            <div>
-              <h3>Learn Veggies</h3>
-              <MeaningTwoCard />
-              <h3>Learn Fruits</h3>
-              <MeaningCard />
-            </div>
-          </div>
         </div>
+      </div>
+      <div className="second-header">
+        <ThirdHeader />
+      </div>
+      <div className="carousel-container">
+        <WordCarousel words={animalsData.animals} />
+      </div>
+      <div className="second-header">
+        <SecondHeader />
+      </div>
+      <div className="meaning-container">
+        <MeaningTwoCard />
+        <MeaningCard />
       </div>
     </div>
   );
 }
-
-export default TranslationApp;

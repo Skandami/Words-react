@@ -10,11 +10,10 @@ export default function App() {
         <Header />
         <div className="App">
           <TranslationApp />
+          <Footer />
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <div></div>
     </div>
   );
 }

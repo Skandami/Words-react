@@ -8,11 +8,10 @@
 }
 
 .container {
-  width: 1200px;
-  height: 100vh;
+  max-width: 1920px;
+  height: 100%;
   background-color: var(--surprise);
 margin: 0;
-padding: 2rem;
 }
 
 h3 {
@@ -33,16 +32,28 @@ h3 {
   align-items: center;
   height: 100%; 
 }
-
-.meaning-container {
-  position: absolute;
-  top: 0;
-  right: 0;
+.carousel-container {
   display: flex;
-  padding: 5em;
   justify-content: center;
   align-items: center;
   height: 100%; 
+}
+.arrows {
+    display: grid;
+  grid-auto-flow: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+  column-gap: 2rem;
+}
+
+.meaning-container {
+  display: grid;
+  grid-auto-flow: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+  column-gap: 4rem;
 }
 
 
@@ -51,14 +62,29 @@ h3 {
  border: 1px solid var(--surprise); 
   background-color: var(--grey);
   border-radius: 5px;
-  padding: 10px;
-  font-size: larger;
+  padding: 5px;
+  font-size: x-large;
   margin-top: 30px;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   box-shadow:  2px 4px var(--white);
-  
+   display: flex;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+   border-radius: 50%;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+} 
+.card:hover {
+    cursor: pointer;
+  border-radius: 50%;
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
+     
 
 .translation-card {
  border: 1px solid var(--blue); 
@@ -85,9 +111,36 @@ h3 {
 
 .header {
   color: var(--white);
-    background:  var(--grey);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: var(--grey);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 0.5em;
 }
+
+.icon-container {
+  margin-right: 0.5em; 
+  margin-top: 1em;
+}
+
+.title {
+  vertical-align: middle; 
+}
+
+.globe{
+  width: 70px;
+  height: 70px;
+  padding-top: 5px;
+position: relative;
+ 
+} 
+
+
+.wild {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+}
+
 
 .footer {
   width: 100%;
@@ -95,8 +148,6 @@ h3 {
   background-color: var(--grey);
   text-align: center;
 }
-
-
 
 
 .button {
@@ -111,10 +162,10 @@ h3 {
 .input {
   color: var(--grey);
   font-size: 20px;
-  border: 1px solid var(--white);
-  border-radius: 5px;
-  width: 300px;
-  height: 50px;
+  border: 1px solid var(--second-color);
+  border-radius: 6px;
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  cursor: pointer;
 }
-
-
