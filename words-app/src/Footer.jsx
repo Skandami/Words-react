@@ -1,9 +1,8 @@
-
-
+import "./App.css";
 function Footer() {
   return (
     <footer className="footer">
-     <h3>Created by ITGirls</h3>
+      <h3>Created by ITGirls</h3>
     </footer>
   );
 }

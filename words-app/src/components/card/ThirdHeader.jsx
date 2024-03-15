@@ -4,10 +4,10 @@ import icon from "../../assets/wild-animals.png";
 export default function Header() {
   return (
     <header className="header">
+      <span className="icon-container"></span>
       <span>
-        {" "}
-        <img src={icon} className="wild" alt="wild-animal" />{" "}
-      </span>{" "}
+        <img src={icon} className="wild" alt="wild-animal" />
+      </span>
       <h3>Discover Animals</h3>
     </header>
   );

@@ -1,17 +1,35 @@
 import React from "react";
-import icon from "./assets/world-wide-black-symbol.png";
+import icon from "./assets/svg.png";
+import { Link } from "react-router-dom";
+import "./App.css";
 
-function Header() {
+export default function Header() {
   return (
-    <header className="header">
+    <header className="header-container">
       <h1>
         <span className="icon-container">
-          <img src={icon} className="globe" alt="globe" />
+          <Link to="/">
+            <img src={icon} className="globe" alt="globe" />
+          </Link>
         </span>
         <span className="title">Words Translator</span>
       </h1>
+      <nav className="nav">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/translation">Translation</Link>
+          </li>
+          <li>
+            <Link to="/animals">Learn Animals</Link>
+          </li>
+          <li>
+            <Link to="/veggies">Learn Fruits and Vegetables</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
-
-export default Header;
