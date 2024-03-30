@@ -1,5 +1,5 @@
 import React from "react";
-import icon from "./assets/svg.png";
+import icon from "./assets/clipart.png";
 import { Link } from "react-router-dom";
 import "./App.css";
 
@@ -12,13 +12,10 @@ export default function Header() {
             <img src={icon} className="globe" alt="globe" />
           </Link>
         </span>
-        <span className="title">Words Translator</span>
+        <span className="title">MemoLingo</span>
       </h1>
       <nav className="nav">
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
           <li>
             <Link to="/translation">Translation</Link>
           </li>

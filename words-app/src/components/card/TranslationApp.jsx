@@ -1,4 +1,5 @@
-import { useState } from "react";
+// TranslationApp.js
+import React, { useState } from "react";
 import translationsData from "../data/translations.json";
 import animalsData from "../data/animals.json";
 import MeaningCard from "./MeaningCard";
@@ -11,16 +12,19 @@ import ThirdHeader from "./ThirdHeader";
 export default function TranslationApp() {
   const [englishWord, setEnglishWord] = useState("");
   const [translation, setTranslation] = useState(null);
+  const [wordsLearned, setWordsLearned] = useState(0);
 
   const translateWord = () => {
     const foundTranslation = translationsData.translations.find(
       (word) => word.english.toLowerCase() === englishWord.toLowerCase()
     );
     setTranslation(foundTranslation);
+    setWordsLearned((prevWordsLearned) => prevWordsLearned + 1); // Increment wordsLearned when Translate button is clicked
   };
 
   return (
     <div className="app">
+      <div>Words Learned: {wordsLearned}</div>
       <input
         className="input"
         type="text"
@@ -57,3 +61,4 @@ export default function TranslationApp() {
     </div>
   );
 }
+

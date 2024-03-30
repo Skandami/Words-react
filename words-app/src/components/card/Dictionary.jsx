@@ -1,9 +1,8 @@
 import { useState } from "react";
-import icon from "../../assets/svg.png";
+import icon from "../../assets/clipart.png";
 import translationsData from "../data/translations.json";
 import WordCard from "./WordCard";
 import Footer from "../../Footer";
-import Header from "../../Header";
 import { Link } from "react-router-dom";
 
 export default function TranslationApp() {
@@ -26,7 +25,7 @@ export default function TranslationApp() {
               <img src={icon} className="globe" alt="globe" />
             </Link>
           </span>
-          <span className="title">Words Translator</span>
+          <span className="title">MemoLingo</span>
         </h1>
       </header>
 

@@ -1,24 +1,30 @@
 {
-  "animals": [
-    {"english": "cat", "russian": "кошка"},
-    {"english": "dog", "russian": "собака"},
-    {"english": "elephant", "russian": "слон"},
-    {"english": "lion", "russian": "лев"},
-    {"english": "tiger", "russian": "тигр"},
-    {"english": "bear", "russian": "медведь"},
-    {"english": "wolf", "russian": "волк"},
-    {"english": "deer", "russian": "олень"},
-    {"english": "rabbit", "russian": "кролик"},
-    {"english": "fox", "russian": "лиса"},
-    {"english": "horse", "russian": "лошадь"},
-    {"english": "cow", "russian": "корова"},
-    {"english": "sheep", "russian": "овца"},
-    {"english": "pig", "russian": "свинья"},
-    {"english": "chicken", "russian": "курица"},
-    {"english": "duck", "russian": "утка"},
-    {"english": "goose", "russian": "гусь"},
-    {"english": "turkey", "russian": "индейка"},
-    {"english": "frog", "russian": "лягушка"},
-    {"english": "snake", "russian": "змея"}
-  ]
+"animals": [
+{"english": "cat", "transcription": "[kæt]", "russian": "кошка"},
+{"english": "dog", "transcription": "[dɔɡ]", "russian": "собака"},
+{"english": "elephant", "transcription": "[ˈɛləfənt]", "russian": "слон"},
+{"english": "lion", "transcription": "[ˈlaɪən]", "russian": "лев"},
+{"english": "tiger", "transcription": "[ˈtaɪɡər]", "russian": "тигр"},
+{"english": "bear", "transcription": "[bɛr]", "russian": "медведь"},
+{"english": "wolf", "transcription": "[wʊlf]", "russian": "волк"},
+{"english": "deer", "transcription": "[dɪər]", "russian": "олень"},
+{"english": "rabbit", "transcription": "[ˈræbɪt]", "russian": "кролик"},
+{"english": "fox", "transcription": "[fɑks]", "russian": "лиса"},
+{"english": "horse", "transcription": "[hɔrs]", "russian": "лошадь"},
+{"english": "cow", "transcription": "[kaʊ]", "russian": "корова"},
+{"english": "sheep", "transcription": "[ʃiːp]", "russian": "овца"},
+{"english": "pig", "transcription": "[pɪɡ]", "russian": "свинья"},
+{"english": "chicken", "transcription": "[ˈtʃɪkɪn]", "russian": "курица"},
+{"english": "duck", "transcription": "[dʌk]", "russian": "утка"},
+{"english": "goose", "transcription": "[ɡuːs]", "russian": "гусь"},
+{"english": "turkey", "transcription": "[ˈtɜrki]", "russian": "индейка"},
+{"english": "frog", "transcription": "[frɔɡ]", "russian": "лягушка"},
+{"english": "snake", "transcription": "[sneɪk]", "russian": "змея"}
+]
 }
+
+
+
+
+
+

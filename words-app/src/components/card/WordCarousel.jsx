@@ -24,6 +24,7 @@ function WordCarousel({ words }) {
         <button onClick={goToPrevious}>{"<"}</button>
         <WordCard
           english={words[currentIndex].english}
+          transcription={words[currentIndex].transcription}
           russian={words[currentIndex].russian}
         />
         <button onClick={goToNext}>{">"}</button>

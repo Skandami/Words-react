@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import icon from "../../assets/svg.png";
+import icon from "../../assets/clipart.png";
 import MeaningCard from "./MeaningCard";
 import MeaningTwoCard from "./MeaningTwoCard";
 import SecondHeader from "./SecondHeader";
