@@ -11,7 +11,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           style={{ color: "white" }}
         >
-          Skandami
+          Skandami Studio
         </a>
       </h3>
     </footer>

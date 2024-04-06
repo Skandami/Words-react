@@ -8,7 +8,7 @@ export default function GitHubLink() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Skandami
+        Skandami Studio
       </a>
     </div>
   );

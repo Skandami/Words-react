@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.css";
+import "./components/styles/mainPageButtonStyles.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import translationsData from "./components/data/translations.json";
@@ -65,7 +65,7 @@ export default function MainPage() {
             </h2>
             <div className="app">
               <input
-                className="input"
+                className="main-input"
                 type="text"
                 value={englishWord}
                 onChange={(e) => setEnglishWord(e.target.value)}

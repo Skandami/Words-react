@@ -40,7 +40,29 @@
     { "english": "road", "transcription": "[roʊd]", "russian": "дорога" },
     { "english": "city", "transcription": "[ˈsɪti]", "russian": "город" },
     { "english": "country", "transcription": "[ˈkʌntri]", "russian": "страна" },
-    { "english": "world", "transcription": "[wɜːrld]", "russian": "мир" }
+    { "english": "world", "transcription": "[wɜːrld]", "russian": "мир" },
+    {"english": "horse", "transcription": "[hɔrs]", "russian": "лошадь"},
+{"english": "cow", "transcription": "[kaʊ]", "russian": "корова"},
+{"english": "sheep", "transcription": "[ʃiːp]", "russian": "овца"},
+{"english": "pig", "transcription": "[pɪɡ]", "russian": "свинья"},
+{"english": "chicken", "transcription": "[ˈtʃɪkɪn]", "russian": "курица"},
+{"english": "duck", "transcription": "[dʌk]", "russian": "утка"},
+{"english": "goose", "transcription": "[ɡuːs]", "russian": "гусь"},
+{"english": "turkey", "transcription": "[ˈtɜrki]", "russian": "индейка"},
+{"english": "frog", "transcription": "[frɔɡ]", "russian": "лягушка"},
+{"english": "snake", "transcription": "[sneɪk]", "russian": "змея"},
+{ "english": "apple", "transcription": "[ˈæpəl]", "russian": "яблоко" },
+{ "english": "banana", "transcription": "[bəˈnænə]", "russian": "банан" },
+{ "english": "orange", "transcription": "[ˈɔrɪndʒ]", "russian": "апельсин" },
+{ "english": "strawberry", "transcription": "[ˈstrɔːbəri]", "russian": "клубника" },
+{ "english": "grape", "transcription": "[ɡreɪp]", "russian": "виноград" },
+{ "english": "watermelon", "transcription": "[ˈwɔːtərmelən]", "russian": "арбуз" },
+{ "english": "pineapple", "transcription": "[ˈpaɪnæpl]", "russian": "ананас" },
+{ "english": "kiwi", "transcription": "[ˈkiːwiː]", "russian": "киви" },
+{ "english": "cherry", "transcription": "[ˈtʃer.i]", "russian": "вишня" },
+{ "english": "pear", "transcription": "[per]", "russian": "груша" }
+
+
   ]
 }
 

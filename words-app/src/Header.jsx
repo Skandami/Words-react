@@ -14,16 +14,17 @@ export default function Header() {
         </span>
         <span className="title">MemoLingo</span>
       </h1>
+      <h2>for beginners</h2>
       <nav className="nav">
         <ul>
-          <li>
-            <Link to="/translation">Translation</Link>
-          </li>
           <li>
             <Link to="/animals">Learn Animals</Link>
           </li>
           <li>
             <Link to="/veggies">Learn Fruits and Vegetables</Link>
+          </li>
+          <li>
+            <Link to="/test">Take a test</Link>
           </li>
         </ul>
       </nav>
