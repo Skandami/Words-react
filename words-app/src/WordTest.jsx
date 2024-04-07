@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import globe from "./assets/clipart.png";
 import translationsData from "./components/data/translations.json";
 import "./App.css";
 import Footer from "./Footer";
+import { useLocalStorage } from "react-use";
 
 export default function WordTest() {
   const [userTranslations, setUserTranslations] = useState(
@@ -22,6 +23,16 @@ export default function WordTest() {
     setUserTranslations(newTranslations);
   };
 
+  // Получение и установка сохраненных слов
+  const [savedCorrectAnswers, setSavedCorrectAnswers] = useLocalStorage(
+    "correctAnswers",
+    []
+  );
+
+  useEffect(() => {
+    setCorrectAnswers(savedCorrectAnswers);
+  }, [savedCorrectAnswers]);
+
   const checkTranslation = () => {
     const translation = userTranslations[currentIndex].toLowerCase();
     const correctTranslation =
@@ -32,13 +43,16 @@ export default function WordTest() {
     setResults(newResults);
 
     if (result) {
-      setCorrectAnswers([
+      const newCorrectAnswers = [
         ...correctAnswers,
         {
           english: translationsData.translations[currentIndex].english,
           translation: translation,
         },
-      ]);
+      ];
+
+      setCorrectAnswers(newCorrectAnswers);
+      setSavedCorrectAnswers(newCorrectAnswers); // Сохранение в localStorage
 
       setShowNextWord(true);
       setCurrentIndex(currentIndex + 1);

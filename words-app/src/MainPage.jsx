@@ -57,7 +57,7 @@ export default function MainPage() {
         <div className="description-wrapper">
           <div className="picture-container">
             <img src={picture} alt="description" className="picture" />
-            <p>"Expand Your Vocabulary with MemoLingo!"</p>
+            <p>" Begin your English learning journey with MemoLingo!"</p>
           </div>
           <div className="description">
             <h2>

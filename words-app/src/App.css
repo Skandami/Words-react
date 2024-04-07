@@ -327,23 +327,20 @@ padding-top: 2em;
   display: inline-block; 
   margin-right: 10px; 
 }
-
 .translated-words {
   flex: 1;
   margin-top: 10px;
-   height: 400px; 
+  height: 350px; 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 5px;
   width: 100%;
-  height: auto;
-  overflow-y: hidden;
-
+  overflow-y: scroll; 
 }
 
 .translated-words::-webkit-scrollbar {
-   width: 12px;
+   width: 6px;
 }
 
 .translated-words::-webkit-scrollbar-track {
@@ -353,16 +350,16 @@ padding-top: 2em;
 .translated-words::-webkit-scrollbar-thumb {
    background-color: var(--viola);
    border-radius: 20px;
-   border: 3px solid var(--green);
+   border: 3px solid var(--viola);
 }
 
 
 .list-card {
   flex: 0 1 calc(40% - 10px); 
-  height: auto; 
+  height: 120px; 
   padding: 0.3rem; 
   background-color: var(--white); 
-  border-radius: 10px; 
+  border-radius: 0.5rem; 
  
 }
 
@@ -398,17 +395,12 @@ padding-top: 2em;
   background-color: #5245e3;
 }
 
-.main-input {
-  width: 250px;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
 
 
-.input{
-  width: 250px;
+
+input{
+  width: 200px;
+  height: 40px;
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
@@ -514,7 +506,7 @@ h3 {
   content: "\2714"; 
   position: absolute;
   left: 0;
-  color: var(--green); 
+  color: var(--); 
 }
 
 
