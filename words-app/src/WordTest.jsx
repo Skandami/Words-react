@@ -1,118 +1,167 @@
-import React, { useState, useEffect } from "react";
+// WordTest.js
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import globe from "./assets/clipart.png";
-import translationsData from "./components/data/translations.json";
 import "./App.css";
 import Footer from "./Footer";
 import { useLocalStorage } from "react-use";
+import { WordsContext } from "./MainContext";
+import LoadingIndicator from "./components/card/Loading";
 
 export default function WordTest() {
-  const [userTranslations, setUserTranslations] = useState(
-    new Array(translationsData.translations.length).fill("")
-  );
-  const [results, setResults] = useState(
-    new Array(translationsData.translations.length).fill(null)
-  );
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const context = useContext(WordsContext);
+  const { words, updateWords } = context;
+
+  const [userTranslation, setUserTranslation] = useState("");
   const [correctAnswers, setCorrectAnswers] = useState([]);
-  const [showNextWord, setShowNextWord] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [results, setResults] = useState(
+    Array.from({ length: words.length }, () => null)
+  );
+  const [showNextWord, setShowNextWord] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const handleInputChange = (index, e) => {
-    const newTranslations = [...userTranslations];
-    newTranslations[index] = e.target.value;
-    setUserTranslations(newTranslations);
-  };
-
-  // Получение и установка сохраненных слов
   const [savedCorrectAnswers, setSavedCorrectAnswers] = useLocalStorage(
     "correctAnswers",
     []
   );
 
   useEffect(() => {
-    setCorrectAnswers(savedCorrectAnswers);
+    setCorrectAnswers(
+      savedCorrectAnswers.map(({ english, russian }) => ({
+        english,
+        russian,
+      }))
+    );
   }, [savedCorrectAnswers]);
 
-  const checkTranslation = () => {
-    const translation = userTranslations[currentIndex].toLowerCase();
-    const correctTranslation =
-      translationsData.translations[currentIndex].russian.toLowerCase();
-    const result = translation === correctTranslation;
-    const newResults = [...results];
-    newResults[currentIndex] = result;
-    setResults(newResults);
+  useEffect(() => {
+    if (savedCorrectAnswers.length > 0) {
+      setCorrectAnswers(savedCorrectAnswers);
+    }
+  }, []);
 
-    if (result) {
-      const newCorrectAnswers = [
-        ...correctAnswers,
+  useEffect(() => {
+    fetchWords();
+  }, []);
+
+  const fetchWords = async () => {
+    try {
+      const response = await fetch("/api/words");
+
+      if (!response.ok) {
+        throw new Error("Ошибка при загрузке данных с сервера");
+      }
+
+      const fetchedWords = await response.json();
+      updateWords(fetchedWords);
+      setLoading(false);
+    } catch (error) {
+      console.error("Ошибка:", error);
+      setLoading(false);
+    }
+  };
+
+  const handleSaveWord = async (word) => {
+    try {
+      const response = await fetch(
+        "http://itgirlschool.justmakeit.ru/api/words",
         {
-          english: translationsData.translations[currentIndex].english,
-          translation: translation,
-        },
-      ];
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(word),
+        }
+      );
 
-      setCorrectAnswers(newCorrectAnswers);
-      setSavedCorrectAnswers(newCorrectAnswers); // Сохранение в localStorage
+      if (!response.ok) {
+        throw new Error("Ошибка при отправке данных на сервер");
+      } else {
+        console.log("Данные успешно отправлены на сервер");
+      }
 
-      setShowNextWord(true);
+      const updatedWords = await response.json();
+      updateWords(updatedWords);
+
+      setSavedCorrectAnswers([...savedCorrectAnswers, word]);
+    } catch (error) {
+      console.error("Ошибка:", error);
+    }
+  };
+
+  const checkTranslation = () => {
+    const translation = userTranslation.trim().toLowerCase();
+    const { russian: correctTranslation } = words[currentIndex] || {};
+    const isCorrect = translation === correctTranslation;
+
+    setResults((prevResults) => {
+      const newResults = [...prevResults];
+      newResults[currentIndex] = isCorrect;
+      return newResults;
+    });
+
+    if (isCorrect) {
+      const newCorrectAnswer = { ...words[currentIndex] };
+      setCorrectAnswers((prevAnswers) => [...prevAnswers, newCorrectAnswer]);
       setCurrentIndex(currentIndex + 1);
+      setShowNextWord(false);
+      setUserTranslation("");
+      handleSaveWord(newCorrectAnswer);
     }
   };
 
   return (
     <>
-      <div className="test-container">
-        <div>
-          <span className="icon-container">
-            <Link to="/">
-              <img src={globe} className="globe" alt="globe" />
-            </Link>
-          </span>
-          <h2>Word Test</h2>
-          <h3>Enter correct answer</h3>
-          <div className="word-test">
-            <div className="word-test-item">
-              <div className="word">
-                {translationsData.translations[currentIndex].english}
-              </div>
-              <input
-                type="text"
-                value={userTranslations[currentIndex]}
-                onChange={(e) => handleInputChange(currentIndex, e)}
-                className={
-                  results[currentIndex] !== null
-                    ? results[currentIndex]
-                      ? "correct"
-                      : "incorrect"
-                    : ""
-                }
-                disabled={!showNextWord}
-              />
-              {showNextWord && (
+      {loading ? (
+        <LoadingIndicator />
+      ) : (
+        <div className="test-container">
+          <div>
+            <span className="icon-container">
+              <Link to="/">
+                <img src={globe} className="globe" alt="globe" />
+              </Link>
+            </span>
+            <h2>Word Test</h2>
+            <h3>Введите правильный перевод на русский</h3>
+            <div className="word-test">
+              <div className="word-test-item">
+                <div className="word">{words[currentIndex]?.english}</div>
+                <input
+                  type="text"
+                  value={userTranslation}
+                  onChange={(e) => setUserTranslation(e.target.value)}
+                  className={
+                    results[currentIndex] !== null &&
+                    userTranslation.trim() !== "" &&
+                    !results[currentIndex]
+                      ? "incorrect"
+                      : ""
+                  }
+                  disabled={showNextWord}
+                />
                 <button
                   className="button word-test-button"
                   onClick={checkTranslation}
+                  disabled={showNextWord}
                 >
-                  Check
+                  Проверить
                 </button>
-              )}
+              </div>
             </div>
           </div>
+          <div className="list-answers">
+            <h3>Правильные ответы:</h3>
+            <ul>
+              {correctAnswers.map(({ english, russian }, index) => (
+                <li key={index}>
+                  {english} - {russian}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="list-answers">
-          <h3>Correct Answers:</h3>
-          <ul>
-            {correctAnswers.map((answer, index) => (
-              <li key={index}>
-                {answer.english} - {answer.translation}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div>
-        <Footer />
-      </div>
+      )}
+      <Footer />
     </>
   );
 }
