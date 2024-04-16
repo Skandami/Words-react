@@ -69,6 +69,7 @@ padding-top: 2em;
   height: 280px;
   padding: 1em;
   animation: appearAndMove 8s forwards; 
+  cursor:pointer;
 }
 
 @keyframes appearAndMove {
@@ -118,7 +119,7 @@ padding-top: 2em;
   grid-auto-flow: column; 
   justify-content: center; 
   align-items: center; 
-  height: 400px;
+  height: 68vh;
   column-gap: 4rem;
 }
 
@@ -336,7 +337,7 @@ padding-top: 2em;
   justify-content: space-between;
   gap: 5px;
   width: 100%;
-  overflow-y: scroll; 
+  overflow-y: auto; 
 }
 
 .translated-words::-webkit-scrollbar {
@@ -403,8 +404,9 @@ input{
   height: 40px;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--grey);
   box-sizing: border-box;
+
 }
 
 
@@ -461,7 +463,7 @@ h3 {
 
 
 .list-answers {
-  height: 400px; 
+  height: 500px; 
   width: 250px;
   margin-left: 10%;
   overflow-y: auto; 
@@ -506,7 +508,7 @@ h3 {
   content: "\2714"; 
   position: absolute;
   left: 0;
-  color: var(--); 
+  color: var(--grey); 
 }
 
 
@@ -517,12 +519,54 @@ h3 {
 
 
 .correct {
-  border: 1px solid #28a745;
+  border: 1px solid #28a745 !important;
 }
 
 .incorrect {
-  border: 1px solid #dc3545;
+  border: 1px solid #dc3545 !important;
 }
+
+
+
+/* Стили для планшетов и мобильных устройств */
+@media only screen and (max-width: 1024px) {
+  .test-container {
+    margin-left: 2%;
+    margin-right: 5%;
+    gap: 5%;
+  }
+
+  .test-container > div {
+    max-width: none;
+    width: 90%;
+    margin-left: 0;
+  }
+
+  .list-answers {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Стили для мобильных устройств */
+@media only screen and (max-width: 768px) {
+  input {
+    width: 50%;
+  }
+
+  .test-container {
+    margin-top: 5px;
+    margin-right: 20%;
+  }
+  
+  .list-answers {
+    margin-left: 0;
+    margin-right: 0;
+    height: 20vh;
+
+  }
+}
+
 
 /* Медиа-запросы для планшетов и мобильных устройств */
 @media screen and (max-width: 890px) {
@@ -533,13 +577,13 @@ h3 {
 
   .test-container > div {
     margin-top: 5%;
-    width: 70%; 
+    width: 50%; 
     margin-left: 30%; 
     margin-bottom: 5rem; 
   }
 
   .list-answers {
-    margin-left: 10%; 
+    margin-left: 5%; 
   }
 }
 
@@ -551,10 +595,14 @@ h3 {
     display: block; 
     text-align: center; 
     padding: 2em; 
+    
   }
    .picture {
     width: 60%; 
     height: auto;
+  }
+  .h1 {
+    color: var(--grey);
   }
 
 }
@@ -600,4 +648,70 @@ h3 {
   }
 }
 
+/*loading animation*/
+.loader-wrapper {
+  background-color: var(--green);
+  height: 100vh;
+   position: relative;
+  width: 100vw;
+}
 
+.cssload-loader{
+ position: absolute;
+  top: 50%;
+  left: 50%;
+	height:4em;width:4em;
+	margin-top:-2em;
+	margin-left:-2em;
+	background-color:rgb(51,136,153);
+	border-radius:2.5em 2.5em 2.5em 2.5em;
+		-o-border-radius:2.5em 2.5em 2.5em 2.5em;
+		-ms-border-radius:2.5em 2.5em 2.5em 2.5em;
+		-webkit-border-radius:2.5em 2.5em 2.5em 2.5em;
+		-moz-border-radius:2.5em 2.5em 2.5em 2.5em;
+	box-shadow:inset 0 0 0 0.5em rgb(236,234,224);
+		-o-box-shadow:inset 0 0 0 0.5em rgb(236,234,224);
+		-ms-box-shadow:inset 0 0 0 0.5em rgb(236,234,224);
+		-webkit-box-shadow:inset 0 0 0 0.5em rgb(236,234,224);
+		-moz-box-shadow:inset 0 0 0 0.5em rgb(236,234,224);
+	background: linear-gradient(-45deg, rgb(0,153,0), rgb(0,153,0) 50%, rgb(204,204,0) 50%, rgb(204,204,0));
+		background: -o-linear-gradient(-45deg, rgb(0,153,0), rgb(0,153,0) 50%, rgb(204,204,0) 50%, rgb(204,204,0));
+		background: -ms-linear-gradient(-45deg, rgb(0,153,0), rgb(0,153,0) 50%, rgb(204,204,0) 50%, rgb(204,204,0));
+		background: -webkit-linear-gradient(-45deg, rgb(0,153,0), rgb(0,153,0) 50%, rgb(204,204,0) 50%, rgb(204,204,0));
+		background: -moz-linear-gradient(-45deg, rgb(0,153,0), rgb(0,153,0) 50%, rgb(204,204,0) 50%, rgb(204,204,0));
+	background-blend-mode: multiply;
+	border-top:5px solid rgb(0,153,0);
+	border-left:5px solid rgb(0,153,0);
+	border-bottom:5px solid rgb(204,204,0);
+	border-right:5px solid rgb(204,204,0);
+	animation:cssload-roto 1.15s infinite linear;
+		-o-animation:cssload-roto 1.15s infinite linear;
+		-ms-animation:cssload-roto 1.15s infinite linear;
+		-webkit-animation:cssload-roto 1.15s infinite linear;
+		-moz-animation:cssload-roto 1.15s infinite linear;
+}
+
+
+@keyframes cssload-roto {
+	0%{transform:rotateZ(0deg);}
+	100%{transform:rotateZ(360deg);}
+}
+
+@-o-keyframes cssload-roto {
+	0%{-o-transform:rotateZ(0deg);}
+	100%{-o-transform:rotateZ(360deg);}
+}
+
+@-ms-keyframes cssload-roto {
+	0%{-ms-transform:rotateZ(0deg);}
+	100%{-ms-transform:rotateZ(360deg);}
+}
+
+@-webkit-keyframes cssload-roto {
+	0%{-webkit-transform:rotateZ(0deg);}
+	100%{-webkit-transform:rotateZ(360deg);}
+}
+
+@-moz-keyframes cssload-roto {
+	0%{-moz-transform:rotateZ(0deg);}
+	100%{-moz-transform:rotateZ(360deg);}}
