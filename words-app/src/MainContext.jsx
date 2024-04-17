@@ -7,12 +7,12 @@ const WordsProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // получение списка слов из базы данных
+  const baseUrl = "http://itgirlschool.justmakeit.ru";
   const fetchWords = async () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://itgirlschool.justmakeit.ru/api/words"
+        `${baseUrl}/api/words` // используем baseUrl для формирования пути к API
       );
       if (!response.ok) {
         throw new Error("Failed to fetch words");
@@ -29,27 +29,22 @@ const WordsProvider = ({ children }) => {
 
   useEffect(() => {
     fetchWords();
-  }, []);
+  }, [baseUrl]); // обновляем список слов при изменении baseUrl
 
-  //обновление списка слов
   const updateWords = (updatedWords) => {
     setWords(updatedWords);
   };
 
-  // добавление нового слова
   const addWord = async (newWord) => {
     setLoading(true);
     try {
-      const response = await fetch(
-        "http://itgirlschool.justmakeit.ru/api/words",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newWord),
-        }
-      );
+      const response = await fetch(`${baseUrl}/api/words`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWord),
+      });
       if (!response.ok) {
         throw new Error("Failed to add word");
       }
@@ -63,20 +58,16 @@ const WordsProvider = ({ children }) => {
     }
   };
 
-  // обновление слова
   const updateWord = async (id, updatedWord) => {
     setLoading(true);
     try {
-      const response = await fetch(
-        `http://itgirlschool.justmakeit.ru/api/words/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedWord),
-        }
-      );
+      const response = await fetch(`${baseUrl}/api/words/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedWord),
+      });
       if (!response.ok) {
         throw new Error("Failed to update word");
       }
@@ -91,16 +82,12 @@ const WordsProvider = ({ children }) => {
     }
   };
 
-  // удаление слова
   const deleteWord = async (id) => {
     setLoading(true);
     try {
-      const response = await fetch(
-        `http://itgirlschool.justmakeit.ru/api/words/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${baseUrl}/api/words/${id}`, {
+        method: "DELETE",
+      });
       if (!response.ok) {
         throw new Error("Failed to delete word");
       }

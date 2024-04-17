@@ -231,7 +231,7 @@ position: relative;
 
 /*error page*/
 .error {
-  background: url(assets/lost.jpg);
+  background: url(./assets/lost.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; 
