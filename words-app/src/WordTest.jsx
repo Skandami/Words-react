@@ -47,7 +47,9 @@ export default function WordTest() {
 
   const fetchWords = async () => {
     try {
-      const response = await fetch("/api/words");
+      const response = await fetch(
+        "https://itgirlschool.justmakeit.ru/api/words"
+      );
 
       if (!response.ok) {
         throw new Error("Ошибка при загрузке данных с сервера");
@@ -65,7 +67,7 @@ export default function WordTest() {
   const handleSaveWord = async (word) => {
     try {
       const response = await fetch(
-        "http://itgirlschool.justmakeit.ru/api/words",
+        "https://itgirlschool.justmakeit.ru/api/words",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
