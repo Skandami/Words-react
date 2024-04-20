@@ -1,6 +1,8 @@
+// WordCard.jsx
 import React, { useState } from "react";
+import { observer } from "mobx-react";
 
-function WordCard({ english, transcription, russian }) {
+const WordCard = observer(({ word }) => {
   const [displayIndex, setDisplayIndex] = useState(0);
 
   const handleClick = () => {
@@ -8,15 +10,19 @@ function WordCard({ english, transcription, russian }) {
   };
 
   const renderContent = () => {
-    switch (displayIndex) {
-      case 0:
-        return <div>{english}</div>;
-      case 1:
-        return <div>{transcription}</div>;
-      case 2:
-        return <div>{russian}</div>;
-      default:
-        return null;
+    if (word && word.english && word.transcription && word.russian) {
+      switch (displayIndex) {
+        case 0:
+          return <div>{word.english}</div>;
+        case 1:
+          return <div>{word.transcription}</div>;
+        case 2:
+          return <div>{word.russian}</div>;
+        default:
+          return null;
+      }
+    } else {
+      return <div>No word data available</div>;
     }
   };
 
@@ -25,6 +31,6 @@ function WordCard({ english, transcription, russian }) {
       {renderContent()}
     </div>
   );
-}
+});
 
 export default WordCard;

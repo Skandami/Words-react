@@ -336,7 +336,7 @@ padding-top: 2em;
   justify-content: space-between;
   gap: 5px;
   width: 100%;
-  overflow-y: scroll; 
+  overflow-y: auto; 
 }
 
 .translated-words::-webkit-scrollbar {

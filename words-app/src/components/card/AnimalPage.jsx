@@ -1,6 +1,6 @@
 import React from "react";
 import animalsData from "../data/animals.json";
-import WordCarousel from "./WordCarousel";
+import WordCarousel from "../card/WordCarousel";
 import Footer from "../../Footer";
 import { Link } from "react-router-dom";
 import globe from "../../assets/clipart.png";

@@ -2,51 +2,55 @@ import React, { useState, useEffect, useRef } from "react";
 import "./components/styles/mainPageButtonStyles.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import translationsData from "./components/data/translations.json";
 import WordCard from "./components/card/WordCard";
 import picture from "./assets/dog.png";
 import List from "./components/card/List";
 import { useLocalStorage } from "react-use";
+import WordStore from "./WordStore"; // Импортируем WordStore
 
 export default function MainPage() {
   const [englishWord, setEnglishWord] = useState("");
-  const [translation, setTranslation] = useState(null);
-  const [wordsLearned, setWordsLearned] = useState(0);
+  const [translatedWord, setTranslatedWord] = useState(null); // состояние для отслеживания переведенного слова
   const [translatedWords, setTranslatedWords] = useState([]);
   const [savedTranslatedWords, setSavedTranslatedWords] = useLocalStorage(
     "translatedWords",
     []
-  ); // кастомный хук useLocalStorage для сохранения данных в localStorage
+  );
 
-  const translateButtonRef = useRef(null); // ссылка для кнопки "Translate"
+  const translateButtonRef = useRef(null);
+  const [translateClicked, setTranslateClicked] = useState(false); // Состояние для отслеживания нажатия кнопки Translate
 
-  const translateWord = () => {
-    const foundTranslation = translationsData.translations.find(
-      (word) => word.english.toLowerCase() === englishWord.toLowerCase()
-    );
-    setTranslation(foundTranslation);
-    setWordsLearned((prevWordsLearned) => prevWordsLearned + 1);
-
-    // добавление переведенного слова к списку
-    if (foundTranslation) {
-      setTranslatedWords([...translatedWords, foundTranslation]);
-      setSavedTranslatedWords([...savedTranslatedWords, foundTranslation]); // Сохранение переведенных слов в localStorage
-    }
-  };
+  useEffect(() => {
+    // Загрузка данных при монтировании компонента
+    WordStore.fetchWords();
+  }, []);
 
   useEffect(() => {
     //  фокус на кнопке "Translate"
-    if (translation) {
+    if (translatedWord) {
       translateButtonRef.current.focus();
     }
-  }, [translation]);
+  }, [translatedWord]);
+
+  const translateWord = () => {
+    // еревод слова из хранилища и устанавка его в состояние
+    const foundTranslation = WordStore.words.find(
+      (word) => word.english.toLowerCase() === englishWord.toLowerCase()
+    );
+    setTranslatedWord(foundTranslation);
+    setTranslateClicked(true); // флаг нажатия кнопки Translate
+
+    // Добавление переведенного слова в список, если найдено
+    if (foundTranslation) {
+      setTranslatedWords([...translatedWords, foundTranslation]);
+      setSavedTranslatedWords([...savedTranslatedWords, foundTranslation]);
+    }
+  };
 
   const handleRemoveWord = (index) => {
-    // копия массива translatedWords
+    // Удаляние слова из списка
     const updatedWords = [...translatedWords];
-    // удаление слова определнного индекса
     updatedWords.splice(index, 1);
-    // обновление измененного массива
     setTranslatedWords(updatedWords);
   };
 
@@ -60,9 +64,6 @@ export default function MainPage() {
             <p>" Begin your English learning journey with MemoLingo!"</p>
           </div>
           <div className="description">
-            <h2>
-              <div className="count">Words Learned: {wordsLearned}</div>
-            </h2>
             <div className="app">
               <input
                 className="main-input"
@@ -80,12 +81,8 @@ export default function MainPage() {
               </button>
               <div className="wrap">
                 <div className="card-container">
-                  {translation && (
-                    <WordCard
-                      english={translation.english}
-                      transcription={translation.transcription}
-                      russian={translation.russian}
-                    />
+                  {translateClicked && translatedWord && (
+                    <WordCard word={translatedWord} />
                   )}
                 </div>
               </div>
