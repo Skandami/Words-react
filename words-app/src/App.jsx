@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage";
 import AnimalPage from "./components/card/AnimalPage";
 import Veggies from "./components/card/Veggies";
@@ -9,7 +9,7 @@ import ErrorBound from "../ErrorBound";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ErrorBound>
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -19,7 +19,7 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ErrorBound>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
